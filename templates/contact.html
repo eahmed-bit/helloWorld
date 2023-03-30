@@ -3,12 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact</title>
+    {% block page_title %}Contact{% endblock %}
 </head>
 <body>
 {% block page_content %}
     <div class="container">
-        <h1>Contact</h1>
+        {% block page_head %}
+            Contact
+        {% endblock %}
         {% if form_submitted %}
             <div class="row">
                 <div class="col-12">

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+</head>
+<body>
+{% block page_content %}
+    <div class="container">
+        <h1>Contact</h1>
+        {% if form_submitted %}
+            <div class="row">
+                <div class="col-12">
+                    <h2>Thank you for completing my form!</h2>
+                </div>
+                <div class="col-md-6">
+                    <p>First Name: </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ request.form.get('first_name') }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Last Name: </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ request.form.get('last_name') }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Email: </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ request.form.get('email') }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Favorite Color: </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ request.form.get('fav_color') }}</p>
+                </div>
+                <div class="col-12">
+                    <p><a href="{{ url_for('contact') }}">Do Form</a></p>
+                </div>
+            </div>
+        {% else %}
+            <form class="row g-3" action="{{ url_for('contact') }}" method="post">
+                <div class="form-group col-md-6">
+                    <label for="first_name">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="fav_color">Favorite Color</label>
+                    <input type="text" class="form-control" id="fav_color" name="fav_color">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZVPgZoCvDpwJbsHm8M9rqohqy3TiABiN58faW8LZYo/5usLuLlVbUE04P5oNz7Sk"></script>
+{% endblock %}
+</body>
+</html>
